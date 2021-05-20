@@ -13,8 +13,8 @@
     <link href="index.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-      
-    <div class="container">
+    <h2 >Pets</h2>
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Veterinaria</a>
@@ -59,10 +59,11 @@
                 </div>
                 <div class="modal-body">
                 <form id="form">
+                  <input type="hidden" id="indice">
                     <div class="row">
                         <div class="col">
                         <select id='kind' class="form-select" aria-label="Default select example">
-                            <option selected>Animal Kind</option>
+                            <option value="0" selected>Animal Kind</option>
                             <option value="1">Dog</option>
                             <option value="2">Cat</option>
                             <option value="3">Bird</option>

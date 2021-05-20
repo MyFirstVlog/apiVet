@@ -5,4 +5,7 @@
 #form .row {
     padding: 5px 0px;
 }
-
+h2{
+    display: flex;
+    justify-content: center;
+}

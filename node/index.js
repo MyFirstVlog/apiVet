@@ -1,7 +1,5 @@
 const http = require('http');
 const requestHandler = require("./requestHandler")
-global.petResources = require('./resources')
-
 const server = http.createServer(requestHandler); //servidor http
 const port = 8000
 server.listen(8000, ()=>{

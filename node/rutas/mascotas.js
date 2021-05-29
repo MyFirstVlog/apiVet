@@ -21,7 +21,7 @@ DELETE : (data, callback) =>{
     if(data.indice){
         if(petResources.mascotas[data.indice]){
             petResources.mascotas = petResources.mascotas.filter((each,index)=> index != data.indice)
-            callback(200, petResources)}
+            callback(200, petResources.mascotas)}
         else{
             callback(204,{mensaje:'pet already deleted'})
        }                    

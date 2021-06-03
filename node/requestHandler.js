@@ -10,6 +10,16 @@ module.exports = (req, res) => {
     //get http method
     const httpMethod = req.method
 
+    //options-> GIVE CORS PERMISSIONS, wiriting headers
+    res.setHeader("Access-Control-Allow-Origin","*")    
+    res.setHeader("Access-Control-Allow-Methods","OPTIONS,GET,PUT,DELETE,POST")    
+    res.setHeader("Access-Control-Allow-Headers","*")    
+    //give immediately response when method is options
+    if(httpMethod==='OPTIONS'){
+        res.writeHead(200)
+        res.end()
+        return //para que no baje
+    }
     //get the equery
     const Query = parsedUrl.query //o con destructuring
     const {query} =  parsedUrl

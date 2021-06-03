@@ -1,4 +1,8 @@
+const express = require("express")
 const http = require('http');
+const app= express()
+var cors = require('cors')
+app.use(cors())
 const requestHandler = require("./requestHandler")
 const server = http.createServer(requestHandler); //servidor http
 const port = 8000

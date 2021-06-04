@@ -39,26 +39,34 @@ async function petsHTML(){ //se hace async wait para quye apesar de ser async el
     try{
             const rta = await fetch(url)
             const mascotasServer = await rta.json()
-            if(Array.isArray(mascotasServer) && mascotasServer.length > 0 ){
+            if(Array.isArray(mascotasServer)){
                 petsServer = mascotasServer
             }
-            let eachPet = petsServer.map((pet, index)=>
-            `<tr>
-            <th scope="row">${index}</th>
-            <td>${pet.kind}</td>
-            <td>${pet.name}</td>
-            <td>${pet.owner}</td>
-            <td>
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#ModalAdd" class="btn btn-warning editar" data-indice=${index} onclick="editar(this)"><i class="fas fa-edit"></i></button>
-                <button type="button" class="btn btn-danger" data-indice=${index} onclick="deletePet(this)" ><i class="fas fa-trash"></i></button>             
-                
-            </div>
-            </td>
-        </tr>`
-        ).join("")
+            if(mascotasServer.length > 0 )
+            {
+                let eachPet = petsServer.map((pet, index)=>
+                `<tr>
+                <th scope="row">${index}</th>
+                <td>${pet.kind}</td>
+                <td>${pet.name}</td>
+                <td>${pet.owner}</td>
+                <td>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#ModalAdd" class="btn btn-warning editar" data-indice=${index} onclick="editar(this)"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger" data-indice=${index} onclick="deletePet(this)" ><i class="fas fa-trash"></i></button>             
+                    
+                </div>
+                </td>
+            </tr>`
+            ).join("")
+                listOfPets.innerHTML = eachPet
+            }else{
+                listOfPets.innerHTML = `<tr> 
+                            <td colspan="5">There's no pets</td>
+                        </tr>`
+            }
+            
 
-        listOfPets.innerHTML = eachPet
         //Array.from(document.getElementsByClassName('editar')).forEach((editButton) => editButton.onclick = editar)
         
 
@@ -69,8 +77,8 @@ async function petsHTML(){ //se hace async wait para quye apesar de ser async el
 }
 
 function editar(e){
-    console.log(e)
-    console.dir(e)
+    //console.log(e)
+    //console.dir(e)
     submitButton.innerHTML = "Edit"    
     petName.value = petsServer[e.dataset.indice].name
     owner.value = petsServer[e.dataset.indice].owner
@@ -95,9 +103,22 @@ function editar(e){
 
 }
 
-function deletePet(e){    
-    pets = pets.filter((element,indice) => indice != e.dataset.indice)    
-    petsHTML()
+async function deletePet(e){    
+    //pets = pets.filter((element,indice) => indice != e.dataset.indice) 
+    try {
+        const deleteUrl = `http://localhost:8000/pets/?indice=${e.dataset.indice}`   
+        const respuesta =await fetch(deleteUrl,{
+            method:'DELETE',     
+            mode:"cors",
+        })
+        if(respuesta.ok){
+            petsHTML()
+        }
+    } catch (error) {
+        throw error
+    }
+    
+
 }
 
 //solicitar mascotas
@@ -150,9 +171,7 @@ async function handleSubmit(e){
             pets[indice.value] = individualPet     
             urlEnvio = `http://localhost:8000/pets/?indice=${indice.value}`     
             submitButton.innerHTML = "Save"
-            petName.value = ''
-            owner.value = ''
-            petkind.value = '0'
+           
             //petsHTML()           
     }
     const respuesta =await fetch(urlEnvio,{
@@ -166,6 +185,9 @@ async function handleSubmit(e){
     
     if(respuesta.ok){
         petsHTML()
+        petName.value = ''
+        owner.value = ''
+        petkind.value = '0'
     }
         
     } catch (error) {

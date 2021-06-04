@@ -7,17 +7,17 @@ module.exports = {
     {kind:'Dog', name:'alejo', owner:'diana4'},
 ],
         vets: [
-    {name:'Alejandro', lastName:'Estrada', id:'102312'},
-    {name:'Alex', lastName:'Leal', id:'3423'},
-    {name:'Caro', lastName:'Bedoya', id:'1032422312'},
-    {name:'Diana', lastName:'Moscoso', id:'1024234312'},
+    {name:'Alejandro', lName:'Estrada', id:'102312', country:'Netherlands'},
+    {name:'Alex', lName:'Leal', id:'3423',country:'Colombia'},
+    {name:'Caro', lName:'Bedoya', id:'1032422312', country:'Costa Rica'},
+    {name:'Diana', lName:'Moscoso', id:'1024234312', country:'USA'},
         
 ],
         owners: [
-    {name:'Ana', lastName:'Ciro', id:'102312'},
-    {name:'Cristiano', lastName:'Ronaldo', id:'3423'},
-    {name:'Neymar', lastName:'Jr', id:'1032422312'},
-    {name:'Kylian', lastName:'Mbappé', id:'1024234312'},
+    {name:'Ana', lName:'Ciro', id:'102312',country:'Netherlands' },
+    {name:'Cristiano', lName:'Ronaldo', id:'3423',country:'Colombia'},
+    {name:'Neymar', lName:'Jr', id:'1032422312',country:'Costa Rica'},
+    {name:'Kylian', lName:'Mbappé', id:'1024234312',  country:'USA'},
         
 ],
 

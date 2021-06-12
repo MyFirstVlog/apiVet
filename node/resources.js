@@ -22,8 +22,8 @@ module.exports = {
 ],
 
     consults: [
-        {pet:0, vet: 0,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
-        {pet:1, vet: 1,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
-        {pet:2, vet: 2,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
+        {pet:0, vet: 0,dateCreation:new Date(), dateEdition: new Date(),historia:'Diabetes',diagnosis:'Liver'},
+        {pet:1, vet: 1,dateCreation:new Date(), dateEdition: new Date(),historia:'Insuline Dependancy',diagnosis:'Lung'},
+        {pet:2, vet: 2,dateCreation:new Date(), dateEdition: new Date(),historia:'Heart Disease',diagnosis:'Brain'},
     ]
 }

@@ -3,6 +3,11 @@ let consultsResources = require('../resources')
 //console.log('consukl resor', consultsResources)
 var listOfResources = []
 module.exports = { GET : (data, callback) =>{
+    const consultsComplete = consultsResources.consults.map(consulta => 
+        ({...consulta,
+             pet:consultsResources.mascotas[consulta.pet],
+             vet:consultsResources.vets[consulta.vet]
+        }))
     if(data.indice){
         if(consultsResources.consults[data.indice]){
             callback(200, consultsResources.consults[data.indice])}
@@ -10,8 +15,9 @@ module.exports = { GET : (data, callback) =>{
             callback(404,{mensaje:`consult not found`})
        }                    
     }else{
-        callback(200, consultsResources.consults)
+        callback(200, consultsComplete)
     }
+
     
 },
 POST : (data, callback) =>{

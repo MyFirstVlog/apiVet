@@ -47,7 +47,7 @@
           <!-- here is located the button, to add new pets-->
 
           <div class= "action-menu" >
-            <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#ModalAdd">Add new Pet !!!</button>            
+            <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#ModalAdd">Add new Consult !!!</button>            
           </div>
 
           <div class="modal fade" id="ModalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -62,24 +62,36 @@
                   <input type="hidden" id="indice">
                     <div class="row">
                         <div class="col">
-                        <select id='kind' class="form-select" aria-label="Default select example">
-                            <option value="0" selected>Animal Kind</option>
-                            <option value="1">Dog</option>
-                            <option value="2">Cat</option>
-                            <option value="3">Bird</option>
-                            <option value="4">Other</option>
+                        <select id='listPets' class="form-select" aria-label="Default select example">
+                            <option selected>Select Pet</option>                            
                         </select>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col">
-                            <input type="text" name="petname" id="petname" class="form-control" placeholder="Pet's name" >
-                        </div>
-                        <div class="col">
-                            <input type="text" name="owner" id="owner" class="form-control" placeholder="Owner" aria-label="Last name">
-                        </div>
-                        
+                      <div class="col">
+                      <select id='listVets' class="form-select" aria-label="Default select example">
+                          <option selected>Select Vet</option>                            
+                      </select>
+                      </div>
+                  </div>
+
+                    <div class="row">
+                        <div class="col">                          
+                            <textarea  style="color: black; font-weight: lighter;" id="petname" class="form-control" placeholder="History"/> </textarea>
+                        </div>                       
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <select id='listDiagnosis' class="form-select" aria-label="Default select example">
+                            <option selected>Select Diagnosis</option>
+                            <option >Parvovirosis</option>     
+                            <option >Moquillo</option>     
+                            <option >Trauma Cefalico</option>   
+                            <option >Sarna</option>                            
+                        </select>
+                      </div>
                     </div>
                 </form>
                 </div>

@@ -1,10 +1,10 @@
 module.exports = {
         mascotas: [
-    {kind:'Dog', name:'alejo', owner:'diana0'},
-    {kind:'Dog', name:'alejo', owner:'diana1'},
-    {kind:'Dog', name:'alejo', owner:'diana2'},
-    {kind:'Dog', name:'alejo', owner:'diana3'},
-    {kind:'Dog', name:'alejo', owner:'diana4'},
+    {kind:'Dog', name:'alejo1', owner:'diana0'},
+    {kind:'Dog', name:'alejo2', owner:'diana1'},
+    {kind:'Dog', name:'alejo3', owner:'diana2'},
+    {kind:'Dog', name:'alejo4', owner:'diana3'},
+    {kind:'Dog', name:'alejo5', owner:'diana4'},
 ],
         vets: [
     {name:'Alejandro', lName:'Estrada', id:'102312', country:'Netherlands'},

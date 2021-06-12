@@ -10,7 +10,7 @@ module.exports = { GET : (data, callback) =>{
         }))
     if(data.indice){
         if(consultsResources.consults[data.indice]){
-            callback(200, consultsResources.consults[data.indice])}
+            callback(200, consultsComplete.consults[data.indice])}
         else{
             callback(404,{mensaje:`consult not found`})
        }                    

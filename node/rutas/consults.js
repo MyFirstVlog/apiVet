@@ -1,12 +1,14 @@
 
 let consultsResources = require('../resources')
-//console.log('consukl resor', consultsResources)
+console.log('consukl resor', consultsResources)
 var listOfResources = []
 module.exports = { GET : (data, callback) =>{
     const consultsComplete = consultsResources.consults.map(consulta => 
         ({...consulta,
-             pet:consultsResources.mascotas[consulta.pet],
-             vet:consultsResources.vets[consulta.vet]
+             pet:{...consultsResources.mascotas[consulta.pet], id:consulta.pet},
+             vet:{...consultsResources.vets[consulta.vet], id:consulta.vet},
+
+
         }))
     if(data.indice){
         if(consultsResources.consults[data.indice]){

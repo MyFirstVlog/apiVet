@@ -1,14 +1,23 @@
 
-
 const listaConsultas = document.getElementById('list-consults')
 const optionsServerConsultsPets = document.getElementById('listPets')
 const optionsServerConsultsVets = document.getElementById('listVets')
+const submitButton = document.getElementById('saveButton') 
+const index = document.getElementById('indice')
+const vet = document.getElementById('listVets')
+const pet = document.getElementById('listPets')
+const history = document.getElementById('petHistory')
+const diagnosis = document.getElementById('listDiagnosis')
+const urlV = 'http://localhost:8000/consults'
+
+let individualConsult = {index:'',vet:'',pet:'', historia:'', diagnosis:''}
+
 
 let consults = []
 let pets = []
 let vets = []
 /**
- * {pet:0, vet: 0,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
+  {pet:0, vet: 0,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
         {pet:1, vet: 1,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
         {pet:2, vet: 2,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
  */
@@ -23,7 +32,7 @@ async function listConsults(){
             consults = serverConsults
         }
         if(respuesta.ok){
-            console.log('respuestas', consults)
+            console.log('respuestasiM', consults)
             const htmlConsults = consults.map((each,index) => `<tr>
             <th scope="row">${index}</th>
             <td>${each.pet.name}</td>
@@ -62,8 +71,7 @@ async function listSelect(){
             console.log('respuestas', pets)
             const htmlSelect = pets.map((each,index) => `<option value=${index}>${each.name}</option>  `
         ).join("")
-        optionsServerConsultsPets.innerHTML += htmlSelect
-            
+        optionsServerConsultsPets.innerHTML += htmlSelect             
         }
     } catch (error) {
         throw error
@@ -93,4 +101,70 @@ async function listSelectVets(){
     }
 }
 
+
+function editar(e){
+    /*console.log(e)
+    console.dir(e)*/
+    console.log('pet',Number(consults[e.dataset.indice].pet.id))
+    console.log('vet',Number(consults[e.dataset.indice].vet.id))
+    submitButton.innerHTML = "Edit"    
+    pet.value = Number(consults[e.dataset.indice].pet.id)//consults[e.dataset.indice].pet.id//e.dataset.indice 
+    vet.value = Number(consults[e.dataset.indice].vet.id)//consults[e.dataset.indice].vet.id//e.dataset.indice 
+    history.value = consults[e.dataset.indice].historia
+    diagnosis.value = consults[e.dataset.indice].diagnosis
+    index.value = e.dataset.indice 
+    /*console.log('index', consults[e.dataset.indice])    
+    console.log('ds', vet)  
+    console.log('ds', pet)*/     
+
+}
+
+
 listSelectVets()
+
+//Diagnosis
+
+async function handleSubmit(e){
+    e.preventDefault()
+    try {
+        
+        let accion = submitButton.innerHTML   
+             
+        individualConsult={index:index.value,vet:vet.value,pet:pet.value, historia:history.value, diagnosis:diagnosis.value}
+  
+        console.log('esto es lo que se envia', individualConsult)
+        let metodo = 'POST'
+        let urlEnvio = urlV
+
+        if(accion == 'Edit'){
+            metodo = 'PUT'
+            urlEnvio = `http://localhost:8000/consults/?indice=${index.value}` 
+            submitButton.innerHTML = "Save"            
+        }
+        const respuesta =await fetch(urlEnvio,{
+            method:metodo,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify(individualConsult),
+            mode:"cors",
+        })
+        console.log('respuestaR', respuesta)
+        if(respuesta.ok){
+            listConsults()
+            pet.value = '-1'
+            vet.value = '-1'
+            history.value = ''
+            diagnosis.value = ''
+        }
+        
+    } catch (error) {
+        throw error
+    }
+
+
+    
+}
+
+submitButton.onclick = handleSubmit
+

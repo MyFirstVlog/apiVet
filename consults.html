@@ -63,7 +63,7 @@
                     <div class="row">
                         <div class="col">
                         <select id='listPets' class="form-select" aria-label="Default select example">
-                            <option selected>Select Pet</option>                            
+                            <option value='-1' selected>Select Pet</option>                            
                         </select>
                         </div>
                     </div>
@@ -71,26 +71,20 @@
                     <div class="row">
                       <div class="col">
                       <select id='listVets' class="form-select" aria-label="Default select example">
-                          <option selected>Select Vet</option>                            
+                          <option value='-1' selected>Select Vet</option>                            
                       </select>
                       </div>
                   </div>
 
                     <div class="row">
                         <div class="col">                          
-                            <textarea  style="color: black; font-weight: lighter;" id="petname" class="form-control" placeholder="History"/> </textarea>
+                            <textarea  style="color: black; font-weight: lighter;" id="petHistory" class="form-control" placeholder="History"/> </textarea>
                         </div>                       
                     </div>
 
                     <div class="row">
                       <div class="col">
-                        <select id='listDiagnosis' class="form-select" aria-label="Default select example">
-                            <option selected>Select Diagnosis</option>
-                            <option >Parvovirosis</option>     
-                            <option >Moquillo</option>     
-                            <option >Trauma Cefalico</option>   
-                            <option >Sarna</option>                            
-                        </select>
+                        <textarea  style="color: black; font-weight: lighter;" id="listDiagnosis" class="form-control" placeholder="Diagnosis"/> </textarea>
                       </div>
                     </div>
                 </form>

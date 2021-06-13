@@ -12,7 +12,7 @@ let pets = [{
 }]
 let individualPet = {kind:'',name:'',owner:''}
 
-const url = 'http://localhost:8000/pets'
+const url = 'https://vetappback.vercel.app/pets'
 
 
 const modal = document.getElementById('ModalAdd')
@@ -25,7 +25,7 @@ const submitButton = document.getElementById('saveButton')
 let petsServer = []
 
 async function petsHTML(){ //se hace async wait para quye apesar de ser async el fecth no no comppile hasta que se obtemga rta
-    /*fetch('http://localhost:8000/pets')
+    /*fetch('https://vetappback.vercel.app/pets')
     .then((res) =>{ 
         if(res.ok){
             return res.json()
@@ -106,7 +106,7 @@ function editar(e){
 async function deletePet(e){    
     //pets = pets.filter((element,indice) => indice != e.dataset.indice) 
     try {
-        const deleteUrl = `http://localhost:8000/pets/?indice=${e.dataset.indice}`   
+        const deleteUrl = `https://vetappback.vercel.app/pets/?indice=${e.dataset.indice}`   
         const respuesta =await fetch(deleteUrl,{
             method:'DELETE',     
             mode:"cors",
@@ -123,7 +123,7 @@ async function deletePet(e){
 
 //solicitar mascotas
 function requestPets(){
-    fetch('http://localhost:8000/pets')
+    fetch('https://vetappback.vercel.app/pets')
     .then((res) =>{ 
         if(res.ok){
             return res.json()
@@ -169,7 +169,7 @@ async function handleSubmit(e){
     if(accion == 'Edit'){           
             metodo = 'PUT'
             pets[indice.value] = individualPet     
-            urlEnvio = `http://localhost:8000/pets/?indice=${indice.value}`     
+            urlEnvio = `https://vetappback.vercel.app/pets/?indice=${indice.value}`     
             submitButton.innerHTML = "Save"
            
             //petsHTML()           

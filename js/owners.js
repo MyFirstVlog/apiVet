@@ -11,7 +11,7 @@ const form = document.getElementById('form');
 const indice = document.getElementById('indice')
 const submitButton = document.getElementById('saveButton') 
 const listOfOwners = document.getElementById('list-owners')
-const urlV = 'http://localhost:8000/owners'
+const urlV = 'https://vetappback.vercel.app/owners'
 /*
 console.log(idVet)
 console.log(vetName)
@@ -88,7 +88,7 @@ function editar(e){
 async function deleteOwner(e){    
     //owners = owners.filter((element,indice) => indice != e.dataset.indice)  
     try {
-        const deleteUrl = `http://localhost:8000/owners/?indice=${e.dataset.indice}`   
+        const deleteUrl = `https://vetappback.vercel.app/owners/?indice=${e.dataset.indice}`   
         const respuesta =await fetch(deleteUrl,{
             method:'DELETE',     
             mode:"cors",
@@ -132,7 +132,7 @@ async function handleSubmit(e){
 
         if(accion == 'Edit'){
             metodo = 'PUT'
-            urlEnvio = `http://localhost:8000/owners/?indice=${indice.value}` 
+            urlEnvio = `https://vetappback.vercel.app/owners/?indice=${indice.value}` 
             submitButton.innerHTML = "Save"            
         }
         const respuesta =await fetch(urlEnvio,{

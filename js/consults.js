@@ -8,7 +8,7 @@ const vet = document.getElementById('listVets')
 const pet = document.getElementById('listPets')
 const history = document.getElementById('petHistory')
 const diagnosis = document.getElementById('listDiagnosis')
-const urlV = 'http://localhost:8000/consults'
+const urlV = 'https://vetappback.vercel.app/consults'
 
 let individualConsult = {index:'',vet:'',pet:'', historia:'', diagnosis:''}
 
@@ -22,7 +22,7 @@ let vets = []
         {pet:2, vet: 2,dateCreation:new Date(), dateEdition: new Date(),historia:'',diagnosis:''},
  */
 
-const url = 'http://localhost:8000/consults'
+const url = 'https://vetappback.vercel.app/consults'
 
 async function listConsults(){
     try {
@@ -59,7 +59,7 @@ async function listConsults(){
 
 listConsults()
 
-const urlPets = 'http://localhost:8000/pets'
+const urlPets = 'https://vetappback.vercel.app/pets'
 async function listSelect(){
     try {
         const response = await fetch(urlPets)
@@ -81,7 +81,7 @@ async function listSelect(){
 }
 listSelect()
 //Vets}
-const urlVets = 'http://localhost:8000/vets'
+const urlVets = 'https://vetappback.vercel.app/vets'
 async function listSelectVets(){
     try {
         const response2 = await fetch(urlVets)
@@ -138,7 +138,7 @@ async function handleSubmit(e){
 
         if(accion == 'Edit'){
             metodo = 'PUT'
-            urlEnvio = `http://localhost:8000/consults/?indice=${index.value}` 
+            urlEnvio = `https://vetappback.vercel.app/consults/?indice=${index.value}` 
             submitButton.innerHTML = "Save"            
         }
         const respuesta =await fetch(urlEnvio,{

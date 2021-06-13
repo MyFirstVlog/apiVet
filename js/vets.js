@@ -11,7 +11,7 @@ const form = document.getElementById('form');
 const indice = document.getElementById('indice')
 const submitButton = document.getElementById('saveButton') 
 const listOfVets = document.getElementById('list-vets')
-const url = 'http://localhost:8000/vets'
+const url = 'https://vetappback.vercel.app/vets'
 
 
 
@@ -86,7 +86,7 @@ function editar(e){
 
 async function deleteVet(e){    
     try {
-        const deleteUrl = `http://localhost:8000/vets/?indice=${e.dataset.indice}`   
+        const deleteUrl = `https://vetappback.vercel.app/vets/?indice=${e.dataset.indice}`   
         const respuesta =await fetch(deleteUrl,{
             method:'DELETE',     
             mode:"cors",
@@ -132,7 +132,7 @@ async function handleSubmit(e){
         let urlEnvio = url
         if(accion == 'Edit'){
             metodo = 'PUT'
-            urlEnvio = `http://localhost:8000/vets/?indice=${indice.value}` 
+            urlEnvio = `https://vetappback.vercel.app/vets/?indice=${indice.value}` 
             submitButton.innerHTML = "Save"
             
         }
